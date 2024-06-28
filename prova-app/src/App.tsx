@@ -1,14 +1,59 @@
 import React from "react";
-//1 - Um componente SEMPRE deve começar com a primeira letra
-//maiúscula
-//2 - Todo componente DEVE ser uma função do JS
-//3 - Todo deve retornar apenas UM elemento HTML
+
+import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+import TarefaListar from "./components/tarefa-listar";
+import TarefaCadastrar from "./components/tarefa-cadastrar";
+
+
 function App() {
   return (
     <div>
-      <h1>Projeto base em React com TypeScript</h1>
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/pages/produto/listar"}>
+                Listar Produtos{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to={"/pages/produto/cadastrar"}>
+                Cadastrar Produtos{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to={"/pages/cep/consultar"}>Consultar CEP </Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<TarefaListar />} />
+          <Route
+            path="/pages/produto/listar"
+            element={<TarefaListar />}
+          />
+          <Route
+            path="/pages/produto/cadastrar"
+            element={<TarefaCadastrar />}
+          />
+          <Route
+            path="/pages/cep/consultar"
+            element={<CepConsultar />}
+          />
+          <Route
+            path="/pages/produto/alterar/:id"
+            element={<TarefaAlterar />}
+          />
+        </Routes>
+        <footer>
+          <p>Desenvolvido por Diogo Steinke Deconto</p>
+        </footer>
+      </BrowserRouter>
     </div>
   );
 }
-//4 - OBRIGATORIAMENTE o componente DEVE ser exportado
+
 export default App;
