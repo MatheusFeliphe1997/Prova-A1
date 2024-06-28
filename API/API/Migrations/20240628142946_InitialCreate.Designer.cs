@@ -3,6 +3,7 @@ using System;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240628142946_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -36,19 +39,19 @@ namespace API.Migrations
                         new
                         {
                             CategoriaId = "bfe4e7dc-81e4-4e47-a67b-d4fbf3e124bd",
-                            CriadoEm = new DateTime(2024, 6, 29, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(430),
+                            CriadoEm = new DateTime(2024, 6, 29, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(940),
                             Nome = "Trabalho"
                         },
                         new
                         {
                             CategoriaId = "6d091456-5a2f-4b5a-98fc-f1a3b50a627d",
-                            CriadoEm = new DateTime(2024, 6, 30, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(440),
+                            CriadoEm = new DateTime(2024, 6, 30, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(960),
                             Nome = "Estudos"
                         },
                         new
                         {
                             CategoriaId = "39be53a2-fc09-4b6a-bafa-18a6a23c8f6e",
-                            CriadoEm = new DateTime(2024, 7, 1, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(450),
+                            CriadoEm = new DateTime(2024, 7, 1, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(970),
                             Nome = "Lazer"
                         });
                 });
@@ -84,7 +87,7 @@ namespace API.Migrations
                         {
                             TarefaId = "6a8b3e4d-5e4e-4f7e-bdc9-9181e456ad0e",
                             CategoriaId = "bfe4e7dc-81e4-4e47-a67b-d4fbf3e124bd",
-                            CriadoEm = new DateTime(2024, 7, 5, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(620),
+                            CriadoEm = new DateTime(2024, 7, 5, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(1190),
                             Descricao = "Terminar relatório para reunião",
                             Nome = "Concluir relatório",
                             Status = "Não iniciada"
@@ -93,7 +96,7 @@ namespace API.Migrations
                         {
                             TarefaId = "2f1b7dc1-3b9a-4e1a-a389-7f5d2f1c8f3e",
                             CategoriaId = "6d091456-5a2f-4b5a-98fc-f1a3b50a627d",
-                            CriadoEm = new DateTime(2024, 7, 1, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(630),
+                            CriadoEm = new DateTime(2024, 7, 1, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(1210),
                             Descricao = "Preparar-se para a aula de Angular",
                             Nome = "Estudar Angular",
                             Status = "Em andamento"
@@ -102,7 +105,7 @@ namespace API.Migrations
                         {
                             TarefaId = "e5d4a7b9-1f9e-4c4a-ae3b-5b7c1a9d2e3f",
                             CategoriaId = "39be53a2-fc09-4b6a-bafa-18a6a23c8f6e",
-                            CriadoEm = new DateTime(2024, 7, 12, 12, 1, 0, 142, DateTimeKind.Local).AddTicks(640),
+                            CriadoEm = new DateTime(2024, 7, 12, 11, 29, 44, 843, DateTimeKind.Local).AddTicks(1220),
                             Descricao = "Dar um passeio relaxante no parque",
                             Nome = "Passeio no parque",
                             Status = "Concluida"

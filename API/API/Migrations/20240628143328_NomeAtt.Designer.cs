@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20240628121046_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240628143328_NomeAtt")]
+    partial class NomeAtt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,19 +39,19 @@ namespace API.Migrations
                         new
                         {
                             CategoriaId = "bfe4e7dc-81e4-4e47-a67b-d4fbf3e124bd",
-                            CriadoEm = new DateTime(2024, 6, 29, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9180),
+                            CriadoEm = new DateTime(2024, 6, 29, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6440),
                             Nome = "Trabalho"
                         },
                         new
                         {
                             CategoriaId = "6d091456-5a2f-4b5a-98fc-f1a3b50a627d",
-                            CriadoEm = new DateTime(2024, 6, 30, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9200),
+                            CriadoEm = new DateTime(2024, 6, 30, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6450),
                             Nome = "Estudos"
                         },
                         new
                         {
                             CategoriaId = "39be53a2-fc09-4b6a-bafa-18a6a23c8f6e",
-                            CriadoEm = new DateTime(2024, 7, 1, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9210),
+                            CriadoEm = new DateTime(2024, 7, 1, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6460),
                             Nome = "Lazer"
                         });
                 });
@@ -70,10 +70,10 @@ namespace API.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("Nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Titulo")
+                    b.Property<string>("Status")
                         .HasColumnType("TEXT");
 
                     b.HasKey("TarefaId");
@@ -87,28 +87,28 @@ namespace API.Migrations
                         {
                             TarefaId = "6a8b3e4d-5e4e-4f7e-bdc9-9181e456ad0e",
                             CategoriaId = "bfe4e7dc-81e4-4e47-a67b-d4fbf3e124bd",
-                            CriadoEm = new DateTime(2024, 7, 5, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9360),
+                            CriadoEm = new DateTime(2024, 7, 5, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6630),
                             Descricao = "Terminar relatório para reunião",
-                            Status = "Não iniciada",
-                            Titulo = "Concluir relatório"
+                            Nome = "Concluir relatório",
+                            Status = "Não iniciada"
                         },
                         new
                         {
                             TarefaId = "2f1b7dc1-3b9a-4e1a-a389-7f5d2f1c8f3e",
                             CategoriaId = "6d091456-5a2f-4b5a-98fc-f1a3b50a627d",
-                            CriadoEm = new DateTime(2024, 7, 1, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9370),
+                            CriadoEm = new DateTime(2024, 7, 1, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6640),
                             Descricao = "Preparar-se para a aula de Angular",
-                            Status = "Não iniciada",
-                            Titulo = "Estudar Angular"
+                            Nome = "Estudar Angular",
+                            Status = "Em andamento"
                         },
                         new
                         {
                             TarefaId = "e5d4a7b9-1f9e-4c4a-ae3b-5b7c1a9d2e3f",
                             CategoriaId = "39be53a2-fc09-4b6a-bafa-18a6a23c8f6e",
-                            CriadoEm = new DateTime(2024, 7, 12, 9, 10, 45, 808, DateTimeKind.Local).AddTicks(9380),
+                            CriadoEm = new DateTime(2024, 7, 12, 11, 33, 28, 164, DateTimeKind.Local).AddTicks(6640),
                             Descricao = "Dar um passeio relaxante no parque",
-                            Status = "Não iniciada",
-                            Titulo = "Passeio no parque"
+                            Nome = "Passeio no parque",
+                            Status = "Concluida"
                         });
                 });
 

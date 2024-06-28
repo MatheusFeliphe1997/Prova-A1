@@ -55,47 +55,45 @@ app.MapPost("/tarefas/cadastrar", ([FromServices] AppDataContext ctx, [FromBody]
 });
 
 //PUT: http://localhost:5000/tarefas/alterar/{id}
-app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, [FromRoute] string id) =>
+app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx,[FromBody] Tarefa tarefaAlterada, [FromRoute] string id) =>
 {
-    //Implementar a alteração do status da tarefa
     Tarefa? tarefa = ctx.Tarefas.Find(id);
-    if (tarefa is null)
+    if (tarefa == null)
     {
-        return Results.NotFound("Tarefa não encontrada!");
+        return Results.NotFound("Tarefa não encontrada");
     }
-    Tarefa tarefaAlterada = tarefa;
-    tarefa.Nome = tarefaAlterada.Nome;
-    tarefa.Descricao = tarefaAlterada.Descricao;
-    tarefa.Status = tarefaAlterada.Status;
-    tarefa.CategoriaId = tarefaAlterada.CategoriaId;
-    tarefa.Categoria = ctx.Categorias.Find(tarefaAlterada.CategoriaId);
-
+    if (tarefa.Status == "Não iniciada")
+        tarefa.Status = "Em andamento";
+    
+    else
+        tarefa.Status = "Concluida";
+    
     ctx.Tarefas.Update(tarefa);
     ctx.SaveChanges();
-    return Results.Ok("Tarefa alterada com sucesso!");
-
+    return Results.Ok(tarefa);
 });
 
 //GET: http://localhost:5000/tarefas/naoconcluidas
 app.MapGet("/tarefas/naoconcluidas", ([FromServices] AppDataContext ctx) =>
 {
     //Implementar a listagem de tarefas não concluídas
-    Tarefa? tarefa = ctx.Tarefas.Find();
-    if (tarefa is null)
+
+    if (ctx.Tarefas.Any())
     {
-        return Results.NotFound("Tarefa não encontrada!");
+        return Results.Ok(ctx.Tarefas.Where(t => t.Status != "Concluida").ToList());
     }
-    
-
-
-
+    return Results.NotFound("Nenhuma tarefa encontrada");
 });
 
 //GET: http://localhost:5000/tarefas/concluidas
 app.MapGet("/tarefas/concluidas", ([FromServices] AppDataContext ctx) =>
 {
     //Implementar a listagem de tarefas concluídas
-
+    if (ctx.Tarefas.Any())
+    {
+        return Results.Ok(ctx.Tarefas.Where(t => t.Status == "Concluida").ToList());
+    }
+    return Results.NotFound("Nenhuma tarefa Concluida encontrada");
 
 });
 
